@@ -5,12 +5,14 @@ import { Button } from '../../components/Button/Button'
 import { MdOutlineShield } from "react-icons/md";
 import DashboardForm from '../../components/DashboardForm/DashboardForm';
 import InsureNow from '../../components/InsureNow/InsureNow';
+import PolicyDetailModal from '../../components/PolicyDetailModal/PolicyDetailModal';
 
 const Dashboard = () => {
 
   const ShieldIcon = MdOutlineShield as unknown as React.FC
 
    const [isModalOpen, setIsModalOpen] = useState(false);
+   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
 
   return (
     <section className='max-container flex items-start justify-start w-full padding-x padding-y bg-background-main overflow-x-auto'>
@@ -66,7 +68,7 @@ const Dashboard = () => {
                     </div>
 
                     <div 
-                    onClick={() => { item.status === "Uninsured" && setIsModalOpen(true)}} 
+                    onClick={() => { item.status === "Uninsured" ? setIsModalOpen(true): setIsPolicyModalOpen(true)}} 
                      className="flex items-center justify-end">
                       <Button
                         className={`font-Outfit ${item.status === "insured" ? "bg-gray-500" : "bg-blue"}`}
@@ -89,7 +91,7 @@ const Dashboard = () => {
 
 
           </div>
-          <div className='flex flex-col lg:w-2/6 w-full p-6 bg-background-card rounded-[10px] h-screen gap-5'>
+          <div className='flex flex-col lg:w-2/6 w-full p-6 bg-background-card rounded-[10px] h-[70vh] gap-5'>
             <h1 className='text-white font-Outfit text-lg mb-3'>
               Active Coverage
             </h1>
@@ -125,7 +127,9 @@ const Dashboard = () => {
                 ))
               }
             </div>
-            <div className='w-full'>
+            <div 
+            onClick={()=> setIsPolicyModalOpen(true)}
+             className='w-full flex justify-end'>
               <Button 
               variant= "normal"
               size="normal"
@@ -137,8 +141,11 @@ const Dashboard = () => {
           </div>
         </div>
       </div>
+
        {/* Modal */}
       <InsureNow isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
+      <PolicyDetailModal isOpen={isPolicyModalOpen} onClose={() => setIsPolicyModalOpen(false)} />
+
     
     </section>
   )

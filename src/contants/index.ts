@@ -29,6 +29,12 @@ export interface activeCoverageItems {
 
 }
 
+export interface PolicyDetailItems {
+  id: number;
+  label: string;
+  value: string;
+}
+
 
 export const navLinks: NavLink[] = [
   { label: "Dashboard", link: "" },
@@ -53,4 +59,13 @@ export const activeCoverage: activeCoverageItems[] = [
   { id: 1, label: "Virtual Land Parcel #42", policyID: "8A3F...C2E1", coverage: 8250.00, date: 210, percentage: 80 },
   { id: 2, label: "CryptoPunk #7804", policyID: "8A3F...C2E1", coverage: 150000.00, date: 45, percentage: 25 },
 
+];
+
+export const policyDetails: PolicyDetailItems[] = [
+  { id: 1, label: "Asset Covered", value: "Digital Assest X" },
+  { id: 2, label: "Covered Period", value: "July 1, 2024 - June 30, 2025" },
+  { id: 3, label: "Premium Paid", value: "1.5ETH" },
+  { id: 4, label: "Covered Amount", value: "10ETH" },
+  { id: 5, label: "Terms and Condtions", value: "View Terms" },
+ 
 ];

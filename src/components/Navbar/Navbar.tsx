@@ -50,13 +50,14 @@ const Navbar: React.FC = () => {
 
 
         <div
-          className={`fixed top-0 left-0 h-full w-2/3 bg-white shadow-md z-50 transform ${menuOpen ? "translate-x-0" : "-translate-x-full"
+          className={`fixed top-0 left-0 h-full w-2/3 bg-slate-600 shadow-md z-50 transform ${menuOpen ? "translate-x-0" : "-translate-x-full"
             } transition-transform duration-300 ease-in-out`}
         >
-          <button className="absolute top-5 right-5 text-[25px] text-gray-600" onClick={closeMenu}>
-           {/* <XIcon /> */}
+          <button className="absolute top-5 right-5 text-[25px] text-white" onClick={closeMenu}>
+           
            <XIcon />
           </button>
+
           {/* MobileNav */}
 
           <ul className="flex flex-col items-start px-6 pt-20 space-y-6">
@@ -64,7 +65,7 @@ const Navbar: React.FC = () => {
               <li key={item.label} className="w-full">
                 <Link
                   to={`/${item.link}`}
-                  className="block font-babas text-lg text-gray-600 py-2"
+                  className="block font-Outfit text-lg text-white py-2"
                   onClick={closeMenu}
                 >
                   {item.label}
@@ -73,7 +74,7 @@ const Navbar: React.FC = () => {
             ))}
           </ul>
 
-          {/* MpbileButton */}
+          
 
       
         </div>
