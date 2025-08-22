@@ -1,17 +1,17 @@
 import { useState } from "react";
 import { Button } from "../Button/Button";
 
+
 export default function DashboardForm() {
   const [assetType, setAssetType] = useState("");
   const [assetValue, setAssetValue] = useState<number | "">("");
   const [coveragePeriod, setCoveragePeriod] = useState("");
 
 
-
-
   return (
     <div className="mx-auto bg-background-card text-white rounded-xl shadow-lg p-6 space-y-6">
-       <h1 className='text-white font-Outfit text-lg mb-3'>Get an Instant Insurance Quote</h1>
+
+      <h1 className='text-white font-Outfit text-lg mb-3'>Get an Instant Insurance Quote</h1>
 
       <div className="grid grid-cols-2 gap-4">
         <div>
@@ -29,7 +29,7 @@ export default function DashboardForm() {
         </div>
 
         <div>
-         <h2 className="block font-Outfit text-sm mb-2">Asset Value(USD)</h2>
+          <h2 className="block font-Outfit text-sm mb-2">Asset Value(USD)</h2>
           <input
             type="number"
             value={assetValue}
@@ -54,7 +54,7 @@ export default function DashboardForm() {
         </select>
       </div>
 
-     
+
       <div className="flex items-center justify-between bg-gray-700 px-4 py-3 rounded-lg">
         <div className="font-Outfit text-gray-500">
           <p className="text-sm">Estimated Premium: </p>

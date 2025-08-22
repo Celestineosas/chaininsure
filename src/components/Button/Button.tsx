@@ -6,7 +6,7 @@ export const buttonStyles = cva(["transition-colors"], {
     variants: {
         variant: {
             default: ["bg-secondary"],
-            ghost: ["hover:bg-gray-100"],
+            ghost: ["hover:bg-gray-900"],
             dark: [
                 "bg-secondary-dark",
                 "hover:bg-secondary-dark-hover",
@@ -23,7 +23,7 @@ export const buttonStyles = cva(["transition-colors"], {
                 "flex",
                 "items-center",
                 "justify-center",
-                "p-2.5",
+                "p-1.5",
             ],
             normal: [
                 "rounded-[8px]",

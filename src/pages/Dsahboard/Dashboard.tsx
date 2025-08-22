@@ -6,17 +6,48 @@ import { MdOutlineShield } from "react-icons/md";
 import DashboardForm from '../../components/DashboardForm/DashboardForm';
 import InsureNow from '../../components/InsureNow/InsureNow';
 import PolicyDetailModal from '../../components/PolicyDetailModal/PolicyDetailModal';
+import { User } from '../../assets';
+import { useAppSelector } from '../../app/hoot';
+import { useNavigate } from 'react-router';
 
 const Dashboard = () => {
 
   const ShieldIcon = MdOutlineShield as unknown as React.FC
 
-   const [isModalOpen, setIsModalOpen] = useState(false);
-   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
+  const [showUserProfile, setShowUserProfile] = useState(false);
+
+  const userName = useAppSelector((state) => state.user.user)
+
+  const navigate = useNavigate()
 
   return (
     <section className='max-container flex items-start justify-start w-full padding-x padding-y bg-background-main overflow-x-auto'>
       <div className='flex flex-col w-full gap-5'>
+        <div className='flex -mt-5 items-center justify-between w-full text-white'>
+          <h1 className='text-white font-Outfit text-lg'>
+            Hi, {userName}
+          </h1>
+          <div className='relative'>
+            <Button 
+            onClick={()=> setShowUserProfile(!showUserProfile)}
+             variant="ghost" size="icon" className='lg:hidden flex' >
+              <img src={User} alt="User" className="rounded-full border-2 border-blue" />
+            </Button>
+            {
+              showUserProfile && <div className='z-10 absolute right-0 font-Outfit'>
+                <Button 
+                onClick={()=> navigate('/register') }
+                 size="normal"
+                 variant="normal"
+                 className='p-2 whitespace-nowrap bg-gray-600'
+                >Log out</Button>
+                </div>
+            }
+          </div>
+
+        </div>
         <div className='flex flex-col gap-2'>
           <h1 className='text-white font-Outfit text-xl'>
             Insurance Marketplace
@@ -67,9 +98,9 @@ const Dashboard = () => {
                       {item.status}
                     </div>
 
-                    <div 
-                    onClick={() => { item.status === "Uninsured" ? setIsModalOpen(true): setIsPolicyModalOpen(true)}} 
-                     className="flex items-center justify-end">
+                    <div
+                      onClick={() => { item.status === "Uninsured" ? setIsModalOpen(true) : setIsPolicyModalOpen(true) }}
+                      className="flex items-center justify-end">
                       <Button
                         className={`font-Outfit ${item.status === "insured" ? "bg-gray-500" : "bg-blue"}`}
                         size="normal"
@@ -78,10 +109,10 @@ const Dashboard = () => {
                         {item.status === "insured" ? "View Policy" : "Insure Now"}
                       </Button>
                     </div>
-                    
+
                   </div>
                 ))}
-                
+
               </div>
             </div>
 
@@ -127,26 +158,26 @@ const Dashboard = () => {
                 ))
               }
             </div>
-            <div 
-            onClick={()=> setIsPolicyModalOpen(true)}
-             className='w-full flex justify-end'>
-              <Button 
-              variant= "normal"
-              size="normal"
-              className='w-full bg-gray-500'
+            <div
+              onClick={() => setIsPolicyModalOpen(true)}
+              className='w-full flex justify-end'>
+              <Button
+                variant="normal"
+                size="normal"
+                className='w-full bg-gray-500'
               >
-              View All Policies
+                View All Policies
               </Button>
             </div>
           </div>
         </div>
       </div>
 
-       {/* Modal */}
+      {/* Modal */}
       <InsureNow isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} />
       <PolicyDetailModal isOpen={isPolicyModalOpen} onClose={() => setIsPolicyModalOpen(false)} />
 
-    
+
     </section>
   )
 }

@@ -37,7 +37,7 @@ export interface PolicyDetailItems {
 
 
 export const navLinks: NavLink[] = [
-  { label: "Dashboard", link: "" },
+  { label: "Dashboard", link: "dashboard" },
   { label: "Pools", link: "pools" },
   { label: "Claims", link: "claims" },
   { label: "Features", link: "Governance" },
