@@ -15,7 +15,7 @@ const Login = () => {
     const DiscordIcon = FaDiscord as unknown as React.FC
 
     return (
-        <div className="lg:container mx-auto p-[80px] h-[100vh]">
+        <div className="lg:container mx-auto p-[80px] max-sm:p-[50px] h-[100vh]">
             <div className="max-w-[648px] bg-background-card w-full min-h-[382px] p-[31px] mx-auto flex items-center justify-center flex-col rounded-lg border-[1px] border-[#9a9caa]">
 
                 <h3 className="text-3xl text-white text-center font-semibold font-Outfit mb-5 capitalize">Login </h3>

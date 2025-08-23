@@ -8,6 +8,7 @@ import Login from "./pages/Auth/Login/Login";
 import Register from "./pages/Auth/Register/Register";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
+import TicketDashboard from "./pages/TicketDashboard/TicketDashboard";
 
 const AppRoutes = () => {
   return (
@@ -28,6 +29,15 @@ const AppRoutes = () => {
           element={
             <AuthCheck>
               <Dashboard />
+            </AuthCheck>
+          }
+        />
+
+        <Route
+          path="/tickets"
+          element={
+            <AuthCheck>
+              <TicketDashboard />
             </AuthCheck>
           }
         />

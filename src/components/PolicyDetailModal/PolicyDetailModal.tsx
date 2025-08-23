@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../Button/Button";
 import { policyDetails } from "../../contants";
 
@@ -9,11 +9,25 @@ interface PolicyModalProps {
 
 
 const PolicyDetailModal: React.FC<PolicyModalProps> = ({ isOpen, onClose }) => {
-      if (!isOpen) return null;
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
+        if (isOpen) document.addEventListener("keydown", handleEsc);
+        return () => document.removeEventListener("keydown", handleEsc);
+    }, [isOpen, onClose]);
+
+
+    if (!isOpen) return null;
+
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-            <div className="bg-background-card text-white p-6 rounded-2xl shadow-2xl w-[400px]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+         onClick={onClose}
+        >
+            <div
+             onClick={(e) => e.stopPropagation()}
+             className="bg-background-card text-white p-6 rounded-2xl shadow-2xl w-[400px]">
 
                 <div className="flex justify-between items-center mb-4 pb-5 border-b border-blue">
                     <div className="flex flex-col gap-2">

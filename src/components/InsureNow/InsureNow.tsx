@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from "../Button/Button";
 
 interface InsuranceModalProps {
@@ -8,11 +8,24 @@ interface InsuranceModalProps {
 
 
 const InsureNow: React.FC<InsuranceModalProps> = ({ isOpen, onClose }) => {
-     if (!isOpen) return null;
+    useEffect(() => {
+        const handleEsc = (e: KeyboardEvent) => {
+            if (e.key === "Escape") onClose();
+        };
+        if (isOpen) document.addEventListener("keydown", handleEsc);
+        return () => document.removeEventListener("keydown", handleEsc);
+    }, [isOpen, onClose]);
+
+
+    if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70">
-            <div className="bg-background-card text-white p-6 rounded-2xl shadow-2xl w-[400px]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-70"
+            onClick={onClose}
+        >
+            <div className="bg-background-card text-white p-6 rounded-2xl shadow-2xl w-[400px]"
+                onClick={(e) => e.stopPropagation()}
+            >
 
                 <div className="flex justify-between items-center mb-4">
                     <h1 className='text-white font-Outfit text-xl'>
@@ -66,7 +79,7 @@ const InsureNow: React.FC<InsuranceModalProps> = ({ isOpen, onClose }) => {
                     </div>
                 </div>
 
-               
+
                 <Button className="mt-6 w-full bg-blue font-Outfit text-white py-2 rounded-md font-medium transition">
                     Confirm & Purchase
                 </Button>

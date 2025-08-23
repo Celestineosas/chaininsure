@@ -16,6 +16,7 @@ const Dashboard = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
+  
   const [showUserProfile, setShowUserProfile] = useState(false);
 
   const userName = useAppSelector((state) => state.user.user)
@@ -37,12 +38,18 @@ const Dashboard = () => {
             </Button>
             {
               showUserProfile && <div className='z-10 absolute right-0 font-Outfit'>
+
                 <Button 
-                onClick={()=> navigate('/register') }
+                onClick={() =>setShowUserProfile(false)}
                  size="normal"
                  variant="normal"
-                 className='p-2 whitespace-nowrap bg-gray-600'
-                >Log out</Button>
+                 className='px-6 py-2 whitespace-nowrap bg-gray-600 lg:hidden flex gap-2 flex-col font-Outfit'
+                >
+                  <p className='hover:opacity-45'>Profile</p>
+                  <p  onClick={()=> navigate('/tickets') } className='hover:opacity-45'>Tickets</p>
+                  <p  onClick={()=> navigate('/register') } className='hover:opacity-45'>Logout</p>
+                </Button>
+                
                 </div>
             }
           </div>

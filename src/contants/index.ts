@@ -17,7 +17,18 @@ export interface bottomTItems {
   value: number;
   img: string;
   status: string
+}
 
+export interface ticketTopItems {
+  id: number;
+  label: string
+}
+
+export interface ticketBottomTItems {
+  id: number;
+  label: string;
+  ticketID: string;
+  date: string
 }
 export interface activeCoverageItems {
   id: number;
@@ -67,5 +78,18 @@ export const policyDetails: PolicyDetailItems[] = [
   { id: 3, label: "Premium Paid", value: "1.5ETH" },
   { id: 4, label: "Covered Amount", value: "10ETH" },
   { id: 5, label: "Terms and Condtions", value: "View Terms" },
- 
+];
+
+export const ticketTopT: ticketTopItems[] = [
+  { id: 1, label: "Location" },
+  { id: 2, label: "Ticket(ID)" },
+  { id: 3, label: "Timeline" },
+];
+
+
+export const ticketBottom: ticketBottomTItems[] = [
+  { id: 1, label: "The Tonight Show", date: "June[04]", ticketID: "8A3F...C2E1" },
+  { id: 1, label: "02 Arena", date: "August[04]", ticketID: "8A3F...C2E1" },
+  { id: 1, label: "Old Trafford", date: "Feb[26]", ticketID: "8A3F...C2E1" },
+  
 ];

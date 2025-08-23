@@ -20,7 +20,11 @@ const Navbar: React.FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
   const hideThem = ["/register", "/login", "/"];
-  const shouldHideThem = hideThem.includes(location.pathname)
+  const shouldHideThem = hideThem.includes(location.pathname);
+
+  const [showUserProfile, setShowUserProfile] = useState(false);
+
+
 
 
   return (
@@ -60,12 +64,31 @@ const Navbar: React.FC = () => {
           </ul>
             <div className="lg:flex hidden gap-3 items-center justify-center">
               <Button variant="ghost" size="icon">
-               <img src={crest} alt="Crest" className="w-full rounded-full" />
+                <img src={crest} alt="Crest" className="w-full rounded-full" />
               </Button>
-              <Button variant="ghost" size="icon">
-                <img src={User} alt="User" className="rounded-full border-2 border-blue" />
-              </Button>
+              <div className='relative'>
+                <Button
+                  onClick={() => setShowUserProfile(!showUserProfile)}
+                  variant="ghost" size="icon" className='lg:flex hidden' >
+                  <img src={User} alt="User" className="rounded-full border-2 border-blue" />
+                </Button>
+                {
+                  showUserProfile && <div className='z-10 absolute right-0 font-Outfit'>
 
+                    <Button
+                     onClick={() =>setShowUserProfile(false)}
+                      size="normal"
+                      variant="normal"
+                      className='px-6 py-2 whitespace-nowrap bg-gray-600 lg:flex hidden gap-2 flex-col font-Outfit'
+                    >
+                      <p className='hover:opacity-45'>Profile</p>
+                      <p onClick={() => navigate('/tickets')} className='hover:opacity-45'>Tickets</p>
+                      <p onClick={() => navigate('/register')} className='hover:opacity-45'>Logout</p>
+                    </Button>
+
+                  </div>
+                }
+              </div>
             </div>
 
 

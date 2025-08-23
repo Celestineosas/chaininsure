@@ -21,7 +21,7 @@ const Register = () => {
     const dispatch = useAppDispatch();
 
     return (
-        <div className="lg:container h-[100vh] mx-auto p-[80px]">
+        <div className="lg:container h-[100vh] mx-auto p-[80px] max-sm:p-[50px]">
 
 
             <div className="max-w-[648px] bg-background-card w-full min-h-[382px] p-[31px] mx-auto flex items-center justify-center flex-col rounded-lg border-[1px] border-[#9a9caa]">
