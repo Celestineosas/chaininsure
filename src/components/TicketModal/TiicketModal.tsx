@@ -33,7 +33,7 @@ const TicketModal: React.FC<TicketModalProps> = ({ isOpen, onClose }) => {
         >
             <div
 
-                className="bg-gray-800 rounded-2xl shadow-xl p-6 w-full max-w-lg mx-4"
+                className="bg-background-card rounded-2xl shadow-xl p-6 w-full max-w-lg mx-4"
                 onClick={(e) => e.stopPropagation()}
             >
                 <h1
