@@ -1,5 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Button } from "../Button/Button";
+import { useAppDispatch, useAppSelector } from "../../app/hoot";
+import { addTicket } from "../../features/ticketSlice";
+
 
 interface TicketModalProps {
     isOpen: boolean;
@@ -12,6 +15,9 @@ const TicketModal: React.FC<TicketModalProps> = ({ isOpen, onClose }) => {
     const [startDate, setStartDate] = useState("");
     const [endDate, setEndDate] = useState("");
 
+    const dispatch = useAppDispatch();
+    
+
     useEffect(() => {
         const handleEsc = (e: KeyboardEvent) => {
             if (e.key === "Escape") onClose();
@@ -23,8 +29,28 @@ const TicketModal: React.FC<TicketModalProps> = ({ isOpen, onClose }) => {
     if (!isOpen) return null;
 
     const handleProceed = () => {
-    
+        if (!eventName || !ticketAmount || !startDate || !endDate) {
+            alert("Please fill in all fields");
+            return;
+        }
+        dispatch(
+            addTicket({
+                eventName,
+                amount: Number(ticketAmount),
+                startDate,
+                endDate,
+            })
+        )
+
+      setEventName("")
+      setTicketAmount("")
+      setStartDate("")
+      setEndDate("")
+
+        onClose()
     };
+
+   
 
     return (
         <div
@@ -40,7 +66,7 @@ const TicketModal: React.FC<TicketModalProps> = ({ isOpen, onClose }) => {
 
                     className="text-white font-Outfit text-lg mb-6 text-center"
                 >
-                    Create Ticket
+                   Add Ticket
                 </h1>
 
 
@@ -99,7 +125,7 @@ const TicketModal: React.FC<TicketModalProps> = ({ isOpen, onClose }) => {
 
                 </div>
 
-              
+
                 <div className="flex justify-end gap-3 mt-6">
                     <Button
                         onClick={onClose}
@@ -111,7 +137,7 @@ const TicketModal: React.FC<TicketModalProps> = ({ isOpen, onClose }) => {
                         onClick={handleProceed}
                         className="mt-4 bg-blue font-Outfit text-white py-2 rounded-md font-medium transition"
                     >
-                        Proceed
+                        Insure
                     </Button>
                 </div>
             </div>

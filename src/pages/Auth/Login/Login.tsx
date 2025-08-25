@@ -7,7 +7,7 @@ const Login = () => {
     const navigate = useNavigate()
 
     const submitHandle = () => {
-        navigate('/dashboard');
+        navigate('/check');
 
 
     }
@@ -25,7 +25,7 @@ const Login = () => {
                     <input type="password" placeholder="Your Password..." className="w-full text-white bg-gray-600 font-Outfit border border-gray-700 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-500" />
                     <button type="submit" className="w-full h-[50px] font-Outfit bg-blue rounded-lg pl-3.5 text-base text-white font-semibold font-inter capitalize flex items-center justify-center cursor-pointer gap-2.5">Login</button>
                 </form>
-                <div className="flex justify-center items-center flex-col gap-1">
+                <div className="flex justify-center items-center flex-col gap-1 cursor-pointer">
                     <span className="text-base text-white font-normal font-Outfit flex gap-2.5 mt-4">Want to join us? <p onClick={() => navigate("/register")} className="text-blue">Register</p></span>
                     <div className="flex gap-2 items-center justify-center mt-3">
                         <GoogleIcon />

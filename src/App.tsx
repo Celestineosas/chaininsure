@@ -9,20 +9,30 @@ import Register from "./pages/Auth/Register/Register";
 import { Provider } from "react-redux";
 import { store } from "./app/store";
 import TicketDashboard from "./pages/TicketDashboard/TicketDashboard";
+import Check from "./pages/Check/Check";
 
 const AppRoutes = () => {
   return (
-    <main className="max-container">
+    <main className="max-container bg-background-main">
 
       <Navbar />
 
       <Routes>
-        
+
         <Route path="/" element={<Auth />}>
-          <Route index element={<Register />} />
+          <Route index element={<Login />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
         </Route>
+
+        <Route
+          path="/check"
+          element={
+            <AuthCheck>
+              <Check />
+            </AuthCheck>
+          }
+        />
 
         <Route
           path="/dashboard"
@@ -50,10 +60,10 @@ const AppRoutes = () => {
 
 const App = () => (
   <BrowserRouter>
-  <Provider store={store}>
+    <Provider store={store}>
       <AppRoutes />
-  </Provider>
-  
+    </Provider>
+
   </BrowserRouter>
 );
 

@@ -28,7 +28,7 @@ const Dashboard = () => {
       <div className='flex flex-col w-full gap-5'>
         <div className='flex -mt-5 items-center justify-between w-full text-white'>
           <h1 className='text-white font-Outfit text-lg'>
-            Hi, {userName}
+            Hello
           </h1>
           <div className='relative'>
             <Button 

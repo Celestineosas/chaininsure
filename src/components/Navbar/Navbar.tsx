@@ -19,7 +19,7 @@ const Navbar: React.FC = () => {
   // SHow content or not
   const location = useLocation()
   const navigate = useNavigate()
-  const hideThem = ["/register", "/login", "/"];
+  const hideThem = ["/register", "/login", "/", "/check"];
   const shouldHideThem = hideThem.includes(location.pathname);
 
   const [showUserProfile, setShowUserProfile] = useState(false);
@@ -82,8 +82,8 @@ const Navbar: React.FC = () => {
                       className='px-6 py-2 whitespace-nowrap bg-gray-600 lg:flex hidden gap-2 flex-col font-Outfit'
                     >
                       <p className='hover:opacity-45'>Profile</p>
-                      <p onClick={() => navigate('/tickets')} className='hover:opacity-45'>Tickets</p>
-                      <p onClick={() => navigate('/register')} className='hover:opacity-45'>Logout</p>
+                                    <p onClick={() => { location.pathname === "/tickets" ? navigate('/dashboard'): navigate('/tickets')  } } className='hover:opacity-45'>{ location.pathname === "/tickets" ? "NFT": "Tickets"  }</p>
+                                    <p onClick={() => navigate('/login')} className='hover:opacity-45'>Logout</p>
                     </Button>
 
                   </div>

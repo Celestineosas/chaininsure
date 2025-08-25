@@ -13,7 +13,7 @@ const Register = () => {
     const submitHandle = (e: React.FormEvent) => {
         e.preventDefault()
         dispatch(newUser(userName))
-        navigate('/dashboard');
+        navigate('/check');
     }
 
     const GoogleIcon = FcGoogle as unknown as React.FC
@@ -37,7 +37,7 @@ const Register = () => {
                     <input type="password" placeholder="Your Password..." className="w-full text-white bg-gray-600 font-Outfit border border-gray-700 rounded-lg p-3 text-sm focus:outline-none focus:ring-2 focus:ring-blue-5005" />
                     <button type="submit" className="w-full h-[50px] font-Outfit bg-blue rounded-lg pl-3.5 text-base text-white font-semibold font-inter capitalize flex items-center justify-center cursor-pointer gap-2.5">Register</button>
                 </form>
-                <div className="flex justify-center items-center flex-col gap-1">
+                <div className="flex justify-center items-center flex-col gap-1 cursor-pointer">
                     <span className="text-base text-white font-normal font-Outfit flex gap-2.5 mt-4">One of us? <p onClick={() => navigate('/login')} className="text-blue">Login</p></span>
                     <div className="flex gap-2 items-center justify-center mt-3">
                         <GoogleIcon />
