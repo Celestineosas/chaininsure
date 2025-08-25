@@ -76,14 +76,14 @@ const Navbar: React.FC = () => {
                   showUserProfile && <div className='z-10 absolute right-0 font-Outfit'>
 
                     <Button
-                     onClick={() =>setShowUserProfile(false)}
+                      onClick={() => setShowUserProfile(false)}
                       size="normal"
                       variant="normal"
                       className='px-6 py-2 whitespace-nowrap bg-gray-600 lg:flex hidden gap-2 flex-col font-Outfit'
                     >
                       <p className='hover:opacity-45'>Profile</p>
-                                    <p onClick={() => { location.pathname === "/tickets" ? navigate('/dashboard'): navigate('/tickets')  } } className='hover:opacity-45'>{ location.pathname === "/tickets" ? "NFT": "Tickets"  }</p>
-                                    <p onClick={() => navigate('/login')} className='hover:opacity-45'>Logout</p>
+                      <p onClick={() => { location.pathname === "/tickets" ? navigate('/dashboard') : navigate('/tickets') }} className='hover:opacity-45'>{location.pathname === "/tickets" ? "NFT" : "Tickets"}</p>
+                      <p onClick={() => navigate('/login')} className='hover:opacity-45'>Logout</p>
                     </Button>
 
                   </div>

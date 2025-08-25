@@ -8,7 +8,7 @@ import InsureNow from '../../components/InsureNow/InsureNow';
 import PolicyDetailModal from '../../components/PolicyDetailModal/PolicyDetailModal';
 import { User } from '../../assets';
 import { useAppSelector } from '../../app/hoot';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 
 const Dashboard = () => {
 
@@ -16,12 +16,13 @@ const Dashboard = () => {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isPolicyModalOpen, setIsPolicyModalOpen] = useState(false);
-  
+
   const [showUserProfile, setShowUserProfile] = useState(false);
 
   const userName = useAppSelector((state) => state.user.user)
 
   const navigate = useNavigate()
+  const location = useLocation()
 
   return (
     <section className='max-container flex items-start justify-start w-full padding-x padding-y bg-background-main overflow-x-auto'>
@@ -31,26 +32,26 @@ const Dashboard = () => {
             Hello
           </h1>
           <div className='relative'>
-            <Button 
-            onClick={()=> setShowUserProfile(!showUserProfile)}
-             variant="ghost" size="icon" className='lg:hidden flex' >
+            <Button
+              onClick={() => setShowUserProfile(!showUserProfile)}
+              variant="ghost" size="icon" className='lg:hidden flex' >
               <img src={User} alt="User" className="rounded-full border-2 border-blue" />
             </Button>
             {
               showUserProfile && <div className='z-10 absolute right-0 font-Outfit'>
 
-                <Button 
-                onClick={() =>setShowUserProfile(false)}
-                 size="normal"
-                 variant="normal"
-                 className='px-6 py-2 whitespace-nowrap bg-gray-600 lg:hidden flex gap-2 flex-col font-Outfit'
+                <Button
+                  onClick={() => setShowUserProfile(false)}
+                  size="normal"
+                  variant="normal"
+                  className='px-6 py-2 whitespace-nowrap bg-gray-600 lg:hidden flex gap-2 flex-col font-Outfit'
                 >
                   <p className='hover:opacity-45'>Profile</p>
-                  <p  onClick={()=> navigate('/tickets') } className='hover:opacity-45'>Tickets</p>
-                  <p  onClick={()=> navigate('/register') } className='hover:opacity-45'>Logout</p>
+                  <p onClick={() => { location.pathname === "/tickets" ? navigate('/dashboard') : navigate('/tickets') }} className='hover:opacity-45'>{location.pathname === "/tickets" ? "NFT" : "Tickets"}</p>
+                  <p onClick={() => navigate('/login')} className='hover:opacity-45'>Logout</p>
                 </Button>
-                
-                </div>
+
+              </div>
             }
           </div>
 
